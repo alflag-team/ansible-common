@@ -1,4 +1,17 @@
 ---
+- name: restart sshd
+  ansible.builtin.service:
+    name: sshd
+    state: restarted
+    enabled: true
+  become: true
+
+- name: restart systemd-resolved
+  ansible.builtin.systemd_service:
+    name: systemd-resolved
+    state: restarted
+  become: true
+
 - name: stop zabbix-agent
   ansible.builtin.service:
     name: zabbix-agent2

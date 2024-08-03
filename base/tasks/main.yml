@@ -1,0 +1,47 @@
+---
+- name: hostname
+  ansible.builtin.include_tasks:
+    file: hostname.yml
+
+- name: timezone
+  ansible.builtin.include_tasks:
+    file: timezone.yml
+
+- name: locale
+  ansible.builtin.include_tasks:
+    file: locale.yml
+
+- name: sshd
+  ansible.builtin.include_tasks:
+    file: sshd.yml
+
+- name: systemd-resolved
+  ansible.builtin.include_tasks:
+    file: systemd-resolved.yml
+  when:
+    - not skip_systemd_resolved | default(false)
+
+- name: groups
+  ansible.builtin.include_tasks:
+    file: groups.yml
+
+- name: users
+  ansible.builtin.include_tasks:
+    file: users.yml
+
+- name: swap
+  ansible.builtin.include_tasks:
+    file: swap.yml
+  when:
+    - not skip_swap | default(false)
+    - ansible_virtualization_type != 'lxc'
+
+- name: apt
+  ansible.builtin.include_tasks:
+    file: apt.yml
+
+- name: zabbix-agent
+  ansible.builtin.include_tasks:
+    file: zabbix-agent.yml
+  when:
+    - not skip_zabbix_agent | default(false)

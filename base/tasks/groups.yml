@@ -1,0 +1,21 @@
+---
+- name: Create infra group
+  ansible.builtin.group:
+    name: "{{ user_infra_name }}"
+    gid: 1000
+    state: present
+  become: true
+
+- name: Create minecraft group
+  ansible.builtin.group:
+    name: "{{ user_minecraft_name }}"
+    gid: 1001
+    state: present
+  become: true
+
+- name: Create docker group
+  ansible.builtin.group:
+    name: "docker"
+    gid: 999
+    state: present
+  become: true
