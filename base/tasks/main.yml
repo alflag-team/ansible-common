@@ -36,9 +36,15 @@
     - not skip_swap | default(false)
     - ansible_virtualization_type != 'lxc'
 
-- name: apt
+- name: apt repository
   ansible.builtin.include_tasks:
-    file: apt.yml
+    file: apt-repository.yml
+
+- name: unattended-upgrades
+  ansible.builtin.include_tasks:
+    file: unattended-upgrades.yml
+  when:
+    - not skip_unattended_upgrades | default(false)
 
 - name: zabbix-agent
   ansible.builtin.include_tasks:
