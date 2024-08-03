@@ -12,6 +12,7 @@
     create_home: true
     home: /home/infra
     state: present
+  become: true
 
 - name: Copy ssh private key
   ansible.builtin.copy:
@@ -20,12 +21,14 @@
     mode: 0600
     owner: "{{ user_infra_name }}"
     group: "{{ user_infra_name }}"
+  become: true
 
 - name: Set authorized key
   authorized_key:
     user: "{{ user_infra_name }}"
     state: present
     key: "{{ lookup('file', './home/{{ user_infra_name }}/infra_id_ed25519.pub') }}"
+  become: true
 
 # minecraft user
 - name: Create minecraft user
@@ -40,6 +43,7 @@
     create_home: true
     home: /home/minecraft
     state: present
+  become: true
 
 - name: Create .ssh directory
   ansible.builtin.file:
@@ -58,6 +62,7 @@
     owner: "{{ user_minecraft_name }}"
     group: "{{ user_minecraft_name }}"
     mode: 0644
+  become: true
 
 - name: Copy .gitconfig
   template:
@@ -66,6 +71,7 @@
     owner: "{{ user_minecraft_name }}"
     group: "{{ user_minecraft_name }}"
     mode: 0600
+  become: true
 
 - name: Create symlink to kitsunebi
   ansible.builtin.file:
@@ -75,3 +81,4 @@
     owner: "{{ user_minecraft_name }}"
     group: "{{ user_minecraft_name }}"
     force: true
+  become: true
