@@ -36,10 +36,6 @@
     - not skip_swap | default(false)
     - ansible_virtualization_type != 'lxc'
 
-- name: apt repository
-  ansible.builtin.include_tasks:
-    file: apt-repository.yml
-
 - name: unattended-upgrades
   ansible.builtin.include_tasks:
     file: unattended-upgrades.yml
