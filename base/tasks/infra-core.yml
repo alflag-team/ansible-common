@@ -13,6 +13,7 @@
     repo: "https://github.com/alflag-team/infra-core.git"
     dest: "/opt/infra-core"
     version: "master"
+    update: false
   become: true
   become_user: infra
 
