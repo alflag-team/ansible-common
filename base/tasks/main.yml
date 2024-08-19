@@ -42,6 +42,12 @@
   when:
     - not skip_unattended_upgrades | default(false)
 
+- name: infra-core
+  ansible.builtin.include_tasks:
+    file: infra-core.yml
+  when:
+    - not skip_infra_core | default(false)
+
 - name: zabbix-agent
   ansible.builtin.include_tasks:
     file: zabbix-agent.yml

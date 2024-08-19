@@ -1,0 +1,47 @@
+---
+- name: mkdir /opt/infra-core directory
+  ansible.builtin.file:
+    path: "/opt/infra-core"
+    state: directory
+    owner: infra
+    group: infra
+    mode: "0755"
+  become: true
+
+- name: Git clone infra-core
+  ansible.builtin.git:
+    repo: "https://github.com/alflag-team/infra-core.git"
+    dest: "/opt/infra-core"
+    version: "master"
+  become: true
+  become_user: infra
+
+- name: Create symlink to terraform
+  ansible.builtin.file:
+    src: "/opt/infra-core/terraform"
+    dest: "/home/infra/terraform"
+    state: link
+    owner: infra
+    group: infra
+  become: true
+  become_user: infra
+
+- name: Create symlink to ansible
+  ansible.builtin.file:
+    src: "/opt/infra-core/ansible"
+    dest: "/home/infra/ansible"
+    state: link
+    owner: infra
+    group: infra
+  become: true
+  become_user: infra
+
+- name: Create symlink to docker
+  ansible.builtin.file:
+    src: "/opt/infra-core/tools/docker"
+    dest: "/home/infra/docker"
+    state: link
+    owner: infra
+    group: infra
+  become: true
+  become_user: infra
