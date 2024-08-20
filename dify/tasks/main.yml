@@ -3,4 +3,4 @@
   ansible.builtin.git:
     repo: "https://github.com/langgenius/dify.git"
     dest: "/home/infra/dify"
-    version: "master"
+    version: "main"
