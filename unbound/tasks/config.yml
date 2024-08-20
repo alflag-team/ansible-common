@@ -1,0 +1,8 @@
+---
+- name: Copy unbound configuration
+  ansible.builtin.copy:
+    src: ./etc/unbound/unbound.conf
+    dest: /etc/unbound/unbound.conf
+  become: true
+  notify:
+    - Restart unbound
