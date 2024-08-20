@@ -1,0 +1,6 @@
+---
+- name: Git clone dify
+  ansible.builtin.git:
+    repo: "https://github.com/langgenius/dify.git"
+    dest: "/home/infra/dify"
+    version: "master"
