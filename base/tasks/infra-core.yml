@@ -15,8 +15,8 @@
     version: "master"
     update: false
     accept_hostkey: true
+    key_file: "/home/infra/.ssh/infra"
   become: true
-  become_user: infra
 
 - name: Create symlink to terraform
   ansible.builtin.file:
