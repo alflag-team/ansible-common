@@ -11,6 +11,10 @@
   ansible.builtin.include_tasks:
     file: locale.yml
 
+- name: package
+  ansible.builtin.include_tasks:
+    file: package.yml
+
 - name: sshd
   ansible.builtin.include_tasks:
     file: sshd.yml
