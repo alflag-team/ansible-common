@@ -14,6 +14,7 @@
     dest: "/opt/infra-core"
     version: "master"
     update: false
+    accept_hostkey: true
   become: true
   become_user: infra
 
