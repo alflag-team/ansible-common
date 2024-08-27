@@ -45,6 +45,7 @@
     file: unattended-upgrades.yml
   when:
     - not skip_unattended_upgrades | default(false)
+    - ansible_virtualization_type != 'lxc'
 
 - name: infra-core
   ansible.builtin.include_tasks:
