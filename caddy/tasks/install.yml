@@ -8,6 +8,7 @@
       - curl
     update_cache: true
     state: present
+  become: true
 
 - name: Add Caddy repository to sources list
   ansible.builtin.apt_repository:
@@ -15,6 +16,7 @@
       any-version main"
     state: present
     filename: caddy-stable
+  become: true
 
 - name: Add Caddy src repository to sources list
   ansible.builtin.apt_repository:
@@ -22,15 +24,18 @@
       any-version main"
     state: present
     filename: caddy-stable
+  become: true
 
 - name: Install Caddy
   ansible.builtin.apt:
     name: caddy
     state: present
     update_cache: true
+  become: true
 
 - name: Start Caddy
   ansible.builtin.service:
     name: caddy
     state: started
     enabled: true
+  become: true
