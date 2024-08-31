@@ -1,6 +1,27 @@
 ---
-- name: Install caddy
-  nvjacobo.caddy:
-    caddy_package: caddy
-    caddy_package_state: present
-  become: true
+- name: install dependencies
+  ansible.builtin.apt:
+    name:
+      - debian-keyring
+      - debian-archive-keyring
+      - apt-transport-https
+      - gnupg2
+      - curl
+    state: present
+
+- name: Add caddy repository
+  ansible.builtin.deb822_repository:
+    name: caddy
+    uris: "https://dl.cloudsmith.io/public/caddy/stable/deb/debian"
+    signed_by: "https://dl.cloudsmith.io/public/caddy/stable/gpg.key"
+    components: "[main]"
+    suites: "[any-version]"
+    types: "[deb]"
+    state: present
+    enabled: true
+
+- name: install caddy
+  ansible.builtin.apt:
+    name: caddy
+    state: present
+    update_cache: true
