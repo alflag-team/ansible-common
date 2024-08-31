@@ -19,18 +19,14 @@
 
 - name: Add Caddy repository to sources list
   ansible.builtin.apt_repository:
-    repo: "deb https://dl.cloudsmith.io/public/caddy/stable/deb/debian
-      any-version main"
+    repo: "deb [signed-by=/usr/share/keyrings/caddy-stable-archive-keyring.gpg] https://dl.cloudsmith.io/public/caddy/stable/deb/debian any-version main"
     state: present
-    filename: caddy-stable
   become: true
 
 - name: Add Caddy src repository to sources list
   ansible.builtin.apt_repository:
-    repo: "deb-src https://dl.cloudsmith.io/public/caddy/stable/deb/debian
-      any-version main"
+    repo: "deb-src [signed-by=/usr/share/keyrings/caddy-stable-archive-keyring.gpg] https://dl.cloudsmith.io/public/caddy/stable/deb/debian any-version main"
     state: present
-    filename: caddy-stable
   become: true
 
 - name: Install Caddy
