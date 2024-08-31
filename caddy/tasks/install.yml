@@ -8,6 +8,7 @@
       - gnupg2
       - curl
     state: present
+  become: true
 
 - name: Add caddy repository
   ansible.builtin.deb822_repository:
@@ -19,9 +20,11 @@
     types: "[deb]"
     state: present
     enabled: true
+  become: true
 
 - name: install caddy
   ansible.builtin.apt:
     name: caddy
     state: present
     update_cache: true
+  become: true
