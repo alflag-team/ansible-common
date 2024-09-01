@@ -1,0 +1,27 @@
+---
+- name: Install php
+  ansible.builtin.apt:
+    name:
+      - php
+      - php-cli
+      - php-fpm
+      - php-mysql
+      - php-xml
+      - php-mbstring
+      - php-curl
+      - php-zip
+      - php-gd
+      - php-imagick
+      - php-intl
+      - php-bcmath
+      - php-redis
+      - php-ldap
+      - php-pear
+      - php-dev
+      - php-xml
+      - php-memcached
+      - php-soap
+      - php-xmlrpc
+      - php-xdebug
+    state: present
+  become: true
