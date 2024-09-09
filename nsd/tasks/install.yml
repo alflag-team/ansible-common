@@ -1,0 +1,8 @@
+---
+- name: Install nsd
+  ansible.builtin.apt:
+    name:
+      - nsd
+    update_cache: true
+    state: present
+  become: true
