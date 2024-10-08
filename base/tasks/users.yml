@@ -1,4 +1,14 @@
 ---
+# root user
+- name: Copy .gitconfig
+  template:
+    src: "./home/root/.gitconfig"
+    dest: "/home/root/.gitconfig"
+    owner: "root"
+    group: "root"
+    mode: 0600
+  become: true
+
 # infra user
 - name: Create infra user
   user:
