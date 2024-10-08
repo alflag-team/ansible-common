@@ -2,8 +2,8 @@
 # root user
 - name: Copy .gitconfig
   template:
-    src: "./home/root/.gitconfig"
-    dest: "/home/root/.gitconfig"
+    src: "./root/.gitconfig"
+    dest: "/root/.gitconfig"
     owner: "root"
     group: "root"
     mode: 0600
