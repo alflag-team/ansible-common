@@ -1,0 +1,14 @@
+---
+- name: commit.sh cron job
+  ansible.builtin.cron:
+    name: "ptero commit.sh"
+    weekday: "*"
+    day: "*"
+    month: "*"
+    hour: "4,16"
+    minute: "0"
+    user: "root"
+    job: "/opt/infra-core/tools/scripts/ptero/commit.sh"
+    cron_file: "ptero"
+    state: present
+  become: true
